@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--SFO = Search Engine Optimization-->
-    <meta name="description" content="Descrição do site">
-    <meta name="keywords" content="Palavra-chave 1, 2, 3, etc">
+    <meta name="description" content="Site para Comércio Online">
+    <meta name="keywords" content="Site, Comércio">
 
     <!--Google Fonts Open-Sans-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
     <!--favicon-->
     <link rel="shortcut icon" href="<?php echo INCLUDE_PATH; ?>favicon.ico" type="image/x-icon">
 
-    <title>IFPR</title>
+    <title>Comércio</title>
 </head>
 
 <body>
@@ -40,11 +40,11 @@
     // Obtendo a url se exister ou home
     $url = isset($_GET['url']) ? $_GET['url'] : 'home';
     switch ($url) {
-        case 'depoimentos':
-            echo '<target target="depoimentos"/>';
+        case 'sobre':
+            echo '<target target="sobre"/>';
             break;
-        case 'servicos':
-            echo '<target target="servicos"/>';
+        case 'missao':
+            echo '<target target="missao"/>';
             break;
     }
     ?>
@@ -54,14 +54,23 @@
         <div class="center">
             <div class="logo left">
                 <a href="<?php echo INCLUDE_PATH;?>">
-                    <img src="<?php echo INCLUDE_PATH;?>ifpr_logo.png" alt="IFPR">
+                    <img src="<?php echo INCLUDE_PATH;?>comercio_logo.png" alt="Comércio">
                 </a>
             </div>
             <nav class="desktop right">
                 <ul>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>depoimentos">Depoimentos</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>">Página Inicial</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Produtos</a>
+                        <!-- Dropdown do Produtos -->
+                        <div class="dropdown-content">
+                            <a href="bebidas.html">Bebidas</a>
+                            <a href="mercearia.html">Mercearia</a>
+                            <a href="frutas.html">Frutas</a>
+                            <a href="limpeza.html">Limpeza</a>
+                            <a href="#">Mais produtos...</a>
+                        </div>
+                    </li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>missao">Sobre</a></li>
                     <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
             </nav>
@@ -69,8 +78,8 @@
                 <div class="bars-mobile fa-solid fa-bars"></div>
                 <ul>
                     <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>depoimentos">Depoimentos</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Produtos</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>missao">Sobre</a></li>
                     <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
             </nav>
@@ -86,7 +95,7 @@
     if (file_exists('pages/' . $url . '.php')) {
         include('pages/' . $url . '.php');
     } else {
-        if ($url != 'depoimentos' && $url != 'servicos') {
+        if ($url != 'sobre' && $url != 'missao') {
             $pagina404 = true;
             include('pages/404.php');
         } else {
@@ -94,11 +103,11 @@
         }
     }
     ?>
-    
+
     <!--footer-->
     <footer <?php if (isset($pagina404) && $pagina404 == true) echo 'class="fixed"'; ?>>
         <div class="center">
-            <p>Todos os direitos reservados!</p>
+            <p>&copy; 2024 Comércio. Todos os direitos reservados.</p>
         </div>
     </footer>
     <!--footer-->
@@ -112,9 +121,10 @@
     <!--JS-->
     <script src="<?php echo INCLUDE_PATH; ?>assets/js/scripts.js"></script>
 
-    <?php if ($url == 'home' || $url == '' || $url == 'depoimentos' || $url == 'servicos') { ?>
+    <?php if ($url == 'home' || $url == '' || $url == 'sobre' || $url == 'missao') { ?>
     <script src="<?php echo INCLUDE_PATH; ?>assets/js/slider.js"></script>
     <script src="<?php echo INCLUDE_PATH; ?>assets/js/melhorEmail.js"></script>
+
     <!--WhatsApp Button-->
     <a href="https://wa.me/999999999" class="btnWhatsApp" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
